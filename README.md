@@ -50,8 +50,6 @@ customContainerClass: string (optional)
 
 ```
 
-How to use inside other components
-
 To customise this component, pass in a class name to the `customInputClass` or `customContainerClass` prop and style that class name in your custom CSS.
 Otherwise the component will have a default style.
 
