@@ -1,32 +1,30 @@
 # dummy-counter
 
-A simple React component that counts from 0 - 100 and then resets back to 0. This runs for infinity and yes, this is not meant to be functional in any way.
+A simple React component that allows for inputing code recieved via SMS or OTP in standard, multiple textbox way.
 
 ## How to use
 
-Clone this repo to your local computer, then run:
+`npm install simple-react-otp-input`
 
-- `npm install && npm run build`
-
-- To make this component available to other projects on your local computer, run `yarn link`.
-- Then go to the project where you want to use this package and run `yarn link "dummy-counter"`.
-
-Finally, to fix the multiple copies of React bug that shows up with linked React packages:
-
-- navigate to the root of the `dummy-counter` package
-- run `npm link "../path/to/your/project"`
-
-You can now import `dummy-counter` as a normal package installed from npm like so:
+You can now import `OtpInput` from `simple-react-otp-input` like so:
 
 ```
-import Dummy from 'dummy-counter'
-...
-```
+import OtpInput from 'simple-react-otp-input'
 
-You can also import the type definitions if you're using TypeScript like so:
+const [code, setCode] = useState('')
 
-```
-import Dummy, { ICounterProps } from 'dummy-counter'
+const handleCodeChange = (newCode: string) => {
+        setCode(newCode)
+    }
+
+<OtpInput
+                noOfInputs={4}
+                numbersOnly
+                hiddenInput
+                onChange={handleCodeChange}
+                value={code}
+                customInputClass="bg-yellow-500 rounded-full h-10 w-10 text-white text-center"
+/>
 ...
 ```
 
@@ -34,27 +32,56 @@ import Dummy, { ICounterProps } from 'dummy-counter'
 
 ```
 
-className: string (optional)
+noOfInputs: number
+value: string
+onChange: (newCode: string) => void
+
+numbersOnly: boolean (optional)
+hiddenInput: boolean (optional)
+customInputClass: string (optional)
+customContainerClass: string (optional)
 
 ```
 
-To customise this component, pass in a class name to the `className` prop and style that class name in your custom CSS.
+How to use inside other components
+
+To customise this component, pass in a class name to the `customInputClass` or `customContainerClass` prop and style that class name in your custom CSS.
+Otherwise the component will have a default style.
+
+### Default styles
+
+```
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.code-container{
+    display: flex;
+    gap: 16px;
+}
+
+.default-input-style {
+    height: 40px;
+    width: 40px;
+    border: 2px solid black;
+    text-align: center;
+    color: black;
+}
+```
 
 ```
 
 // your-component.js
-import Dummy from 'dummy-counter'
+import OtpInput from 'simple-react-otp-input'
 
 ...
-<Dummy className="dummy" />
+<OtpInput customInputClass="bg-yellow-500 rounded-full  h-10 w-10 text-white text-center"
+customContainerClass="grid grid-cols-2"
+ />
 ...
-
-// your-component.css
-.dummy {
-  color: white;
-  background-color: purple;
-}
 
 ```
 
-**This component was built for an article on how to publish a React component as a package to npm.**
+**Example with Tailwindcss but you can use any other way of styling with classes.**
