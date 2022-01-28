@@ -4,7 +4,9 @@ A simple React component that allows for inputing code recieved via SMS or OTP i
 
 ## How to use
 
-`npm install simple-react-otp-input`
+```
+npm install simple-react-otp-input
+```
 
 You can now import `OtpInput` from `simple-react-otp-input` like so:
 
