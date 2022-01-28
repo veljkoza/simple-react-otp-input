@@ -11,22 +11,27 @@ npm install simple-react-otp-input
 You can now import `OtpInput` from `simple-react-otp-input` like so:
 
 ```
+import {useState} from 'react'
 import OtpInput from 'simple-react-otp-input'
 
-const [code, setCode] = useState('')
+const SampleComponent = () => {
+    const [code, setCode] = useState('')
 
-const handleCodeChange = (newCode: string) => {
+    const handleCodeChange = (newCode: string) => {
         setCode(newCode)
-    }
+     }
 
-<OtpInput
+    return (
+        <OtpInput
                 noOfInputs={4}
                 numbersOnly
                 hiddenInput
                 onChange={handleCodeChange}
                 value={code}
                 customInputClass="bg-yellow-500 rounded-full h-10 w-10 text-white text-center"
-/>
+        />
+    )
+}
 ...
 ```
 
