@@ -1,4 +1,4 @@
-# dummy-counter
+# simple-react-otp-input
 
 A simple React component that allows for inputing code recieved via SMS or OTP in standard, multiple textbox way.
 
